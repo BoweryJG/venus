@@ -1,7 +1,3 @@
-Absolutely! Here’s a **concise and effective README** for your report HTML, suitable for internal documentation or developer/designer handoff.
-
----
-
 # Vero Impact Report – Tyler Oral Surgery
 
 **File:** `index.html`  
