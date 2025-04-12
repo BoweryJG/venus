@@ -13,7 +13,7 @@ This single-page HTML report presents market analysis, competitive benchmarking,
 
 ## Key Features
 
-- **Modern, branded design** QuasarAlpgha styled using Vero colors and clear typography.
+- **Modern, branded design** OptimusAlpha styled using Vero colors and clear typography.
 - **Responsive layout** for desktop and mobile viewing.
 - **Interactive data visualizations** (Chart.js) for demographics and technology benchmarking.
 - **Section navigation** via a fixed table of contents (TOC).
