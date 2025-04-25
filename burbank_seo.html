@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enhanced Burbank, CA Hair Transplant Market Report</title>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -220,8 +222,155 @@
             }
         }
     </style>
+    <style>
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 220px;
+            background: var(--primary-color);
+            color: #fff;
+            padding-top: 40px;
+            z-index: 1000;
+            box-shadow: 2px 0 10px rgba(44,62,80,0.08);
+        }
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-left: 20px;
+        }
+        .sidebar nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 0;
+            transition: color 0.2s;
+        }
+        .sidebar nav a:hover {
+            color: var(--accent-color);
+        }
+        @media (max-width: 900px) {
+            .sidebar { display: none; }
+            body { padding-left: 0 !important; }
+        }
+        body {
+            padding-left: 240px; /* For sidebar */
+        }
+        /* Summary cards */
+        .summary-cards {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .summary-card {
+            background: var(--light-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+            padding: 24px 32px;
+            min-width: 220px;
+            text-align: center;
+            flex: 1 1 220px;
+        }
+        .summary-card h3 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 6px;
+        }
+        .summary-card .card-metric {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        /* Key finding card */
+        .key-finding {
+            background: #fff;
+            border-left: 6px solid var(--accent-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(231,76,60,0.06);
+            padding: 18px 24px;
+            margin: 24px 0;
+        }
+        /* Section divider */
+        .section {
+            margin-bottom: 48px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 32px;
+        }
+        /* Back to top button */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 999;
+            background: var(--secondary-color);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 2rem;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.15);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        #backToTop:hover {
+            background: var(--accent-color);
+        }
+    </style>
 </head>
 <body>
+    <div class="sidebar">
+        <nav>
+            <a href="#introduction">Introduction</a>
+            <a href="#demographic-analysis">Demographics</a>
+            <a href="#market-overview">Market Overview</a>
+            <a href="#consumer-behavior">Consumer Behavior</a>
+            <a href="#competitive-landscape">Competition</a>
+            <a href="#digital-marketing">Digital Marketing</a>
+            <a href="#geographic-targeting">Geographic Targeting</a>
+            <a href="#roi-projections">ROI & Growth</a>
+            <a href="#recommendations">Recommendations</a>
+        </nav>
+    </div>
+    <button id="backToTop" title="Back to top">&#8679;</button>
+    <script>
+    // Back to top button logic
+    window.onscroll = function() {
+        document.getElementById('backToTop').style.display = (window.scrollY > 300) ? 'block' : 'none';
+    };
+    document.getElementById('backToTop').onclick = function() {
+        window.scrollTo({top:0, behavior:'smooth'});
+    };
+    </script>
+    <div class="summary-cards">
+        <div class="summary-card">
+            <h3>Market Size</h3>
+            <div class="card-metric">$4.1B</div>
+            <div>Global Hair Transplant Market (2025)</div>
+        </div>
+        <div class="summary-card">
+            <h3>Burbank Target Age</h3>
+            <div class="card-metric">65,000+</div>
+            <div>Residents in prime age range</div>
+        </div>
+        <div class="summary-card">
+            <h3>Annual Growth</h3>
+            <div class="card-metric">7.8%</div>
+            <div>Projected CAGR</div>
+        </div>
+        <div class="summary-card">
+            <h3>Top Competitor PPC</h3>
+            <div class="card-metric">$20k/mo</div>
+            <div>Digital Ad Spend</div>
+        </div>
+    </div>
     <header>
         <h1>Enhanced Burbank, CA Hair Transplant Market Report</h1>
         <p>A comprehensive analysis with advanced visualizations and strategic insights</p>
@@ -323,6 +472,42 @@
     </div>
     
     <div id="demographic-analysis" class="section">
+    <h2>3. Demographic Analysis of Burbank, Glendale, and Pasadena</h2>
+    <h3>Population Overview</h3>
+    <!-- Interactive Chart: Population by Age Group -->
+    <canvas id="popAgeChart" width="600" height="320" style="max-width:100%;margin:30px 0;"></canvas>
+    <script>
+    const ctx = document.getElementById('popAgeChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['18-29', '30-44', '45-59', '60+'],
+            datasets: [{
+                label: 'Burbank',
+                data: [18000, 24000, 23000, 17000],
+                backgroundColor: 'rgba(52,152,219,0.7)'
+            },{
+                label: 'Glendale',
+                data: [21000, 27000, 25000, 20000],
+                backgroundColor: 'rgba(46,204,113,0.7)'
+            },{
+                label: 'Pasadena',
+                data: [16500, 22000, 21000, 16000],
+                backgroundColor: 'rgba(231,76,60,0.7)'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'top' },
+                title: { display: true, text: 'Population by Age Group (Key Markets)' }
+            },
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+    </script>
         <h2>3. Demographic Analysis of Burbank, Glendale, and Pasadena</h2>
         
         <h3>Population Overview</h3>
@@ -1461,7 +1646,8 @@
         </div>
     </div>
     
-    <div class="footer">
+    <div class="footer" style="margin-left:220px;">
+
         <p>Enhanced Burbank, CA Hair Transplant Market Report | April 2025</p>
         <p>Prepared with comprehensive data analysis and advanced visualizations</p>
     </div>
