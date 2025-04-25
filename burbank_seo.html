@@ -1812,7 +1812,41 @@
     font-weight: 500;
 }
 
+/* Glassmorphism and subtle hover enhancements */
+.site-footer {
+    background: rgba(248, 249, 250, 0.72);
+    backdrop-filter: blur(10px) saturate(140%);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+    border-top: 1.5px solid #e0e0e0cc;
+    box-shadow: 0 -4px 24px #e0e0e040;
+    transition: background 0.3s, box-shadow 0.3s;
 }
+.site-footer:hover {
+    background: rgba(248, 249, 250, 0.93);
+    box-shadow: 0 -6px 32px #b3c6d633;
+}
+
+.modern-table tbody tr:hover {
+    background: rgba(52,152,219,0.07);
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 2px 8px #2c3e5022;
+    transition: all 0.2s;
+}
+
+.key-finding:hover, .callout-box:hover {
+    box-shadow: 0 4px 24px #e0e0e055;
+    background: rgba(255,255,255,0.85);
+    transform: translateY(-2px) scale(1.01);
+    transition: all 0.2s;
+}
+
+.site-footer a, .modern-table a {
+    transition: color 0.2s;
+}
+.site-footer a:hover, .modern-table a:hover {
+    color: #e67e22;
+}
+
     </style>
     <footer class="site-footer">
       <div class="footer-report-title">Enhanced Burbank, CA Hair Transplant Market Report | April 2025</div>
