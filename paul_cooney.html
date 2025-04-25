@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRO Impact Report</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        html {
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            width: 100%;
+            background: rgba(10, 17, 40, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .navbar ul {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem 0;
+            list-style: none;
+        }
+        .navbar a {
+            color: #f0f4ff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+        .navbar a:hover, .navbar a:focus {
+            color: #47b0ff;
+        }
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #47b0ff;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        .social-links {
+            margin: 1rem 0;
+        }
+        .social-links a {
+            color: #f0f4ff;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            transition: color 0.2s, transform 0.2s;
+        }
+        .social-links a:hover, .social-links a:focus {
+            color: #47b0ff;
+            transform: scale(1.15);
+        }
+        .resume-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(90deg, #47b0ff 0%, #4a6cff 100%);
+            color: #fff;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .resume-btn i {
+            margin-right: 0.5rem;
+        }
+        .resume-btn:hover, .resume-btn:focus {
+            background: linear-gradient(90deg, #4a6cff 0%, #47b0ff 100%);
+            transform: translateY(-2px) scale(1.04);
+        }
+        @media (max-width: 700px) {
+            .navbar ul { gap: 1rem; }
+            .container { padding: 1rem; }
+            .profile-pic { width: 80px; height: 80px; }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0a1128 0%, #213363 100%);
+            color: #f0f4ff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: radial-gradient(circle, rgba(74, 108, 255, 0.3) 0%, rgba(10, 17, 40, 0) 70%);
+            z-index: -1;
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.5; }
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #47b0ff, #4a6cff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .client {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .location {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .glass-card:nth-child(2) { animation-delay: 0.2s; }
+        .glass-card:nth-child(3) { animation-delay: 0.4s; }
+        .glass-card:nth-child(4) { animation-delay: 0.6s; }
+        .glass-card:nth-child(5) { animation-delay: 0.8s; }
+        
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to right, #ffffff, #b8c6ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4a6cff 0%, #6c47ff 100%);
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+        
+        .icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 1.5rem 0;
+        }
+        
+        li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        li:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: #47b0ff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(71, 176, 255, 0.7);
+        }
+        
+        strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        .stat-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-box {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #47b0ff, #4a6cff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(74, 108, 255, 0.15) 0%, rgba(108, 71, 255, 0.15) 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .button {
+            background: linear-gradient(135deg, #4a6cff 0%, #6c47ff 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74, 108, 255, 0.4);
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #47b0ff, #4a6cff);
+            width: 0;
+            border-radius: 5px;
+            transition: width 1.5s ease;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            opacity: 0.7;
+            font-size: 0.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .glass-card {
+                padding: 1.5rem;
+            }
+            
+            .stat-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#profile">Profile</a></li>
+            <li><a href="#impact">Impact</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <header id="profile">
+            <div class="glow"></div>
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Paul Cooney" class="profile-pic" />
+            <h1>Paul Cooney</h1>
+            <p class="subtitle">Senior Robotics Engineer &amp; Systems Integrator</p>
+            <p class="location"><i class="fa-solid fa-location-dot"></i> New York, NY, USA</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/paulcooney" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:paul.cooney@email.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://github.com/paulcooney" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+            <a href="/resume_paul_cooney.pdf" class="resume-btn" download><i class="fa-solid fa-file-arrow-down"></i> Download Resume</a>
+        </header>
+            <p class="client">Prepared Exclusively for Dr. Paul D. Cooney</p>
+            <p class="location">Las Cruces, NM / El Paso, TX • April 2025</p>
+        </header>
+        
+        <div class="glass-card">
+            <h2>
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/>
+                    </svg>
+                </div>
+                Executive Summary
+            </h2>
+            <p>
+                Dr. Cooney, your surgical practice consistently stands at the forefront of innovation and patient-centered care. Integrating the RTOS robotic hair restoration system is the logical next step in your trajectory, enhancing your competitive edge, patient outcomes, operational efficiency, and community prestige. This strategic acquisition aligns seamlessly with your proven history of technological leadership, your entrepreneurial drive, and your commitment to delivering transformative patient experiences.
+            </p>
+        </div>
+        
+        <div class="glass-card">
+            <h2>
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 8l-4 4h3v4h2v-4h3l-4-4z"/>
+                    </svg>
+                </div>
+                Strategic Synergy & Practice Innovation
+            </h2>
+            <p>
+                Your reputation for pioneering minimally invasive procedures—such as TEMS and TIF—and your early adoption of advanced laser treatments for venous diseases illustrate your visionary mindset. RTOS robotics synergizes naturally with your established specialty practice, amplifying your clinical capabilities and complementing your aesthetic services:
+            </p>
+            
+            <ul>
+                <li>
+                    <strong>Advanced Precision & Patient Outcomes:</strong> RTOS robotics significantly improves follicle extraction precision, ensuring consistent, superior results compared to manual methods. Patients experience dramatically reduced scarring, minimal discomfort, and rapid recovery—core values in your patient-centric practice.
+                </li>
+                <li>
+                    <strong>Local Competitive Edge:</strong> Currently, no comparable robotics systems exist in Las Cruces or El Paso. Introducing this technology positions your clinic as the premier regional leader, retaining patients locally who currently travel to Phoenix, Dallas, or Los Angeles for advanced hair restoration procedures.
+                </li>
+            </ul>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="precision-bar"></div>
+            </div>
+            <p>Precision Improvement: 95%</p>
+        </div>
+        
+        <div class="glass-card">
+            <h2>
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M7 12h4V7h2v5h4l-5 5-5-5z"/>
+                    </svg>
+                </div>
+                Operational Efficiency & Revenue Expansion
+            </h2>
+            <p>
+                Given your recent life milestone as a new father, time optimization is critical. RTOS addresses this directly:
+            </p>
+            
+            <ul>
+                <li>
+                    <strong>Automated Efficiency:</strong> Procedures that traditionally require extensive manual input (8+ hours per session) become streamlined through robotic assistance, significantly reducing your direct involvement. This increases clinic throughput, allowing you to see additional patients or dedicate valuable time elsewhere.
+                </li>
+                <li>
+                    <strong>High Revenue Potential:</strong> Robotic hair restoration is highly profitable, with procedures typically priced at premium rates ($8,000-$15,000 per session). Your current clientele in vein and skin aesthetics naturally aligns with this demographic, creating easy cross-marketing opportunities and increasing per-patient revenue.
+                </li>
+            </ul>
+            
+            <div class="stat-row">
+                <div class="stat-box">
+                    <div class="stat-value" id="efficiency-value">0%</div>
+                    <p class="stat-label">Efficiency Increase</p>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="revenue-value">$0</div>
+                    <p class="stat-label">Avg. Revenue per Procedure</p>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="time-value">0</div>
+                    <p class="stat-label">Hours Saved Per Week</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="glass-card">
+            <h2>
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                    </svg>
+                </div>
+                Community Leadership & Enhanced Brand Positioning
+            </h2>
+            <p>
+                Your deeply rooted local identity and community service ethos position you ideally for this technological adoption:
+            </p>
+            
+            <ul>
+                <li>
+                    <strong>Prestige & Patient Attraction:</strong> Your practice gains immediate distinction by offering state-of-the-art services previously unavailable regionally. This enhances your clinic's profile, drawing affluent and discerning patients from throughout southern New Mexico and West Texas.
+                </li>
+                <li>
+                    <strong>Social Responsibility & Accessibility:</strong> Providing high-quality, cutting-edge care locally reinforces your community-centric mission. It supports local economic retention and fulfills your professional commitment to reducing the necessity for patients to seek treatment in distant cities.
+                </li>
+            </ul>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="brand-bar"></div>
+            </div>
+            <p>Brand Prestige Increase: 90%</p>
+        </div>
+        
+        <div class="glass-card">
+            <h2>
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"/>
+                    </svg>
+                </div>
+                Psychological and Professional Alignment
+            </h2>
+            <p>
+                Understanding your entrepreneurial spirit and affinity for cutting-edge technology:
+            </p>
+            
+            <ul>
+                <li>
+                    <strong>Innovative Prestige:</strong> Acquiring RTOS places you firmly as a regional healthcare innovator, reinforcing your professional identity as a tech-savvy pioneer, akin to your personal passion for aviation and precision-based hobbies.
+                </li>
+                <li>
+                    <strong>Enhanced Patient Satisfaction:</strong> Your explicit motivation—transforming patient lives and restoring self-confidence—is directly served by this technology, offering tangible outcomes that align closely with your professional philosophy and personal gratification from patient success stories.
+                </li>
+                <li>
+                    <strong>Long-Term Growth & Legacy:</strong> Investment in robotics solidifies your practice's long-term sustainability, making it resilient and attractive for future partnerships, expansions, or even succession planning, aligning with your evolving priorities as a family man and entrepreneur.
+                </li>
+            </ul>
+        </div>
+        
+        <div class="glass-card highlight-box">
+            <h2>Conclusion & Recommended Action</h2>
+            <p>
+                Integrating the RTOS robotic hair restoration system presents a compelling, strategic, and highly beneficial opportunity for your practice. Given your proven track record of innovation, commitment to patient care, and entrepreneurial acumen, adopting this technology is not merely advantageous—it is essential for maintaining and expanding your competitive advantage.
+            </p>
+            <p>
+                We strongly recommend immediate consideration and integration of the RTOS system to leverage maximum benefits, securing your position as the unequivocal leader in advanced, patient-focused surgical and aesthetic care in the El Paso–Las Cruces region.
+            </p>
+            
+            <div class="center">
+                <button class="button" id="cta-button">Schedule Implementation Consultation</button>
+            </div>
+        </div>
+        
+        <footer>
+            VRO Impact Report • Prepared April 2025 • Confidential
+        </footer>
+    </div>
+    
+    <script>
+        // Simple animation functions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate progress bars
+            setTimeout(function() {
+                document.getElementById('precision-bar').style.width = '95%';
+                document.getElementById('brand-bar').style.width = '90%';
+            }, 500);
+            
+            // Animate stat values
+            animateValue('efficiency-value', 0, 65, 2000, '');
+            animateValue('revenue-value', 0, 12500, 2500, '$');
+            animateValue('time-value', 0, 15, 1500, '');
+            
+            // Button interaction
+            document.getElementById('cta-button').addEventListener('click', function() {
+                alert('Thank you for your interest! A representative will contact you to schedule your implementation consultation.');
+            });
+            
+            // Add hover effects to stat boxes
+            const statBoxes = document.querySelectorAll('.stat-box');
+            for (let i = 0; i < statBoxes.length; i++) {
+                statBoxes[i].addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                statBoxes[i].addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            }
+        });
+        
+        // Function to animate counting
+        function animateValue(id, start, end, duration, prefix) {
+            const obj = document.getElementById(id);
+            if (!obj) return;
+            
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                obj.textContent = prefix + value.toLocaleString();
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+    </script>
+</body>
+</html>
