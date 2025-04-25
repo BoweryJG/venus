@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <style>
+    text {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      fill: #333;
+    }
+    
+    /* Demographics Icon */
+    @keyframes pulseDemo {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    .demographics-icon { animation: pulseDemo 3s infinite; }
+    
+    /* Hair Loss Icon */
+    @keyframes hairLossAnim {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(10px); opacity: 0; }
+    }
+    .hair-particle { animation: hairLossAnim 2.5s infinite; }
+    
+    /* Market Growth Animation */
+    @keyframes growChart {
+      0% { transform: scaleY(0); }
+      100% { transform: scaleY(1); }
+    }
+    .market-bar { animation: growChart 2s infinite alternate; transform-origin: bottom; }
+    
+    /* Procedure Distribution Animation */
+    @keyframes rotatePie {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .pie-chart { animation: rotatePie 10s infinite linear; transform-origin: center; }
+    
+    /* Gender Distribution Animation */
+    @keyframes genderPulse {
+      0%, 100% { r: 20; }
+      50% { r: 25; }
+    }
+    .gender-circle { animation: genderPulse 3s infinite alternate; }
+    
+    /* Keyword Volume Animation */
+    @keyframes keywordWave {
+      0% { d: path('M10,50 Q25,30 40,50 Q55,70 70,50 Q85,30 100,50'); }
+      50% { d: path('M10,50 Q25,70 40,50 Q55,30 70,50 Q85,70 100,50'); }
+      100% { d: path('M10,50 Q25,30 40,50 Q55,70 70,50 Q85,30 100,50'); }
+    }
+    .keyword-path { animation: keywordWave 4s infinite; }
+    
+    /* Competitor Budgets Animation */
+    @keyframes budgetPulse {
+      0%, 100% { height: 40px; }
+      50% { height: 60px; }
+    }
+    .budget-bar { animation: budgetPulse 2s infinite alternate ease-in-out; }
+    
+    /* Geographic Heatmap Animation */
+    @keyframes heatPulse {
+      0%, 100% { fill-opacity: 0.3; }
+      50% { fill-opacity: 0.8; }
+    }
+    .heat-region { animation: heatPulse 2s infinite alternate; }
+    
+    /* ROI Projection Animation */
+    @keyframes roiGrow {
+      0% { stroke-dashoffset: 283; }
+      100% { stroke-dashoffset: 0; }
+    }
+    .roi-circle {
+      stroke-dasharray: 283;
+      animation: roiGrow 3s infinite alternate;
+    }
+  </style>
+  
+  <!-- Demographics Icon -->
+  <g transform="translate(50, 50)">
+    <g class="demographics-icon">
+      <rect x="10" y="10" width="20" height="40" fill="#4285F4" rx="2" />
+      <rect x="40" y="20" width="20" height="30" fill="#DB4437" rx="2" />
+      <rect x="70" y="30" width="20" height="20" fill="#F4B400" rx="2" />
+    </g>
+    <text x="50" y="70" text-anchor="middle">Demographics</text>
+  </g>
+  
+  <!-- Hair Loss Icon -->
+  <g transform="translate(200, 50)">
+    <ellipse cx="50" cy="30" rx="30" ry="20" fill="#DDD" />
+    <circle class="hair-particle" cx="40" cy="40" r="2" fill="#333" />
+    <circle class="hair-particle" cx="50" cy="38" r="2" fill="#333" style="animation-delay: 0.5s" />
+    <circle class="hair-particle" cx="60" cy="42" r="2" fill="#333" style="animation-delay: 1s" />
+    <circle class="hair-particle" cx="45" cy="45" r="2" fill="#333" style="animation-delay: 1.5s" />
+    <circle class="hair-particle" cx="55" cy="40" r="2" fill="#333" style="animation-delay: 2s" />
+    <text x="50" y="70" text-anchor="middle">Hair Loss by Age</text>
+  </g>
+  
+  <!-- Market Growth Animation -->
+  <g transform="translate(350, 50)">
+    <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="1" />
+    <line x1="10" y1="10" x2="10" y2="50" stroke="#333" stroke-width="1" />
+    <rect class="market-bar" x="20" y="30" width="10" height="20" fill="#00796B" />
+    <rect class="market-bar" x="40" y="20" width="10" height="30" fill="#00796B" style="animation-delay: 0.2s" />
+    <rect class="market-bar" x="60" y="10" width="10" height="40" fill="#00796B" style="animation-delay: 0.4s" />
+    <text x="50" y="70" text-anchor="middle">Market Growth</text>
+  </g>
+  
+  <!-- Procedure Distribution -->
+  <g transform="translate(500, 50)">
+    <g class="pie-chart">
+      <path d="M50,50 L50,10 A40,40 0 0,1 85,65 Z" fill="#FF5722" />
+      <path d="M50,50 L85,65 A40,40 0 0,1 15,65 Z" fill="#03A9F4" />
+      <path d="M50,50 L15,65 A40,40 0 0,1 50,10 Z" fill="#8BC34A" />
+    </g>
+    <text x="50" y="70" text-anchor="middle">Procedure Distribution</text>
+  </g>
+  
+  <!-- Gender Distribution -->
+  <g transform="translate(650, 50)">
+    <circle class="gender-circle" cx="30" cy="30" r="20" fill="#F06292" fill-opacity="0.7" />
+    <circle class="gender-circle" cx="70" cy="30" r="20" fill="#42A5F5" fill-opacity="0.7" style="animation-delay: 1.5s" />
+    <text x="50" y="70" text-anchor="middle">Gender Distribution</text>
+  </g>
+  
+  <!-- Keyword Volume -->
+  <g transform="translate(50, 200)">
+    <path class="keyword-path" d="M10,50 Q25,30 40,50 Q55,70 70,50 Q85,30 100,50" fill="none" stroke="#673AB7" stroke-width="3" />
+    <text x="50" y="70" text-anchor="middle">Keyword Volume</text>
+  </g>
+  
+  <!-- Competitor Budgets -->
+  <g transform="translate(200, 200)">
+    <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="1" />
+    <rect class="budget-bar" x="20" y="10" width="15" height="40" fill="#FF9800" />
+    <rect class="budget-bar" x="45" y="10" width="15" height="40" fill="#E91E63" style="animation-delay: 0.5s" />
+    <rect class="budget-bar" x="70" y="10" width="15" height="40" fill="#9C27B0" style="animation-delay: 1s" />
+    <text x="50" y="70" text-anchor="middle">Competitor Budgets</text>
+  </g>
+  
+  <!-- Geographic Heatmap -->
+  <g transform="translate(350, 200)">
+    <rect class="heat-region" x="20" y="20" width="20" height="20" fill="#F44336" rx="2" />
+    <rect class="heat-region" x="45" y="25" width="20" height="20" fill="#FF9800" rx="2" style="animation-delay: 0.3s" />
+    <rect class="heat-region" x="40" y="10" width="15" height="15" fill="#FFC107" rx="2" style="animation-delay: 0.6s" />
+    <rect class="heat-region" x="65" y="15" width="25" height="25" fill="#F44336" rx="2" style="animation-delay: 0.9s" />
+    <rect class="heat-region" x="15" y="45" width="30" height="10" fill="#FF9800" rx="2" style="animation-delay: 1.2s" />
+    <rect class="heat-region" x="50" y="45" width="40" height="15" fill="#FFC107" rx="2" style="animation-delay: 1.5s" />
+    <text x="50" y="70" text-anchor="middle">Geographic Heatmap</text>
+  </g>
+  
+  <!-- ROI Projection -->
+  <g transform="translate(500, 200)">
+    <circle cx="50" cy="30" r="25" fill="none" stroke="#4CAF50" stroke-width="5" opacity="0.3" />
+    <circle class="roi-circle" cx="50" cy="30" r="25" fill="none" stroke="#4CAF50" stroke-width="5" transform="rotate(-90, 50, 30)" />
+    <text x="50" y="30" text-anchor="middle" dominant-baseline="middle" fill="#4CAF50" font-weight="bold">ROI</text>
+    <text x="50" y="70" text-anchor="middle">ROI Projection</text>
+  </g>
+</svg>
