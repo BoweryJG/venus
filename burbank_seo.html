@@ -795,14 +795,77 @@
         
         <p>Modern hair transplant consumers exhibit sophisticated digital behavior during their research phase:</p>
         
-        <ul>
-            <li>92% use search engines as their primary research tool</li>
-            <li>74% visit at least 5 different websites before contacting a provider</li>
-            <li>68% read online reviews on multiple platforms</li>
-            <li>53% watch video content about procedures and results</li>
-            <li>47% participate in online forums or communities related to hair loss</li>
-            <li>38% follow social media accounts focused on hair restoration</li>
-        </ul>
+        <!-- Digital Behavior Chart -->
+        <canvas id="digitalBehaviorChart" width="600" height="340" style="margin:32px 0 12px 0;"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+        window.addEventListener('DOMContentLoaded', function() {
+          new Chart(document.getElementById('digitalBehaviorChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+              labels: [
+                'Search Engines', 'Visit >5 Websites', 'Read Reviews', 'Watch Videos', 'Online Forums', 'Social Media'
+              ],
+              datasets: [{
+                label: 'Percent of Consumers',
+                data: [92, 74, 68, 53, 47, 38],
+                backgroundColor: [
+                  '#3498db', '#9b59b6', '#e67e22', '#e74c3c', '#2ecc71', '#34495e'
+                ],
+                borderRadius: 10
+              }]
+            },
+            options: {
+              plugins: {
+                legend: {display: false},
+                title: {display: true, text: 'How Consumers Research Hair Transplants', color: '#2c3e50', font: {size: 20, weight: 'bold'}}
+              },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  max: 100,
+                  ticks: {color: '#2c3e50', callback: v => v + '%'},
+                  grid: {color: '#eee'}
+                },
+                x: {
+                  ticks: {color: '#2c3e50'},
+                  grid: {display: false}
+                }
+              },
+              animation: {duration: 1200, easing: 'easeOutBounce'}
+            }
+          });
+        });
+        </script>
+
+        <!-- Key Takeaways Callout -->
+        <div class="callout-box key-takeaway">
+          <b>Key Takeaways:</b><br>
+          <ul>
+            <li><b>92%</b> of patients start with search engines—SEO and Google visibility are critical.</li>
+            <li><b>68%</b> rely on online reviews; reputation management is essential.</li>
+            <li><b>53%</b> watch videos—clinics should invest in educational and testimonial video content.</li>
+            <li>Multi-channel presence (web, video, social) is now expected by consumers.</li>
+          </ul>
+        </div>
+
+        <!-- Digital Behavior Table -->
+        <div class="data-table-wrap">
+          <table class="modern-table">
+            <caption>Consumer Digital Research Behaviors</caption>
+            <thead>
+              <tr><th>Behavior</th><th>% of Consumers</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Use search engines</td><td>92%</td></tr>
+              <tr><td>Visit &gt;5 websites</td><td>74%</td></tr>
+              <tr><td>Read online reviews</td><td>68%</td></tr>
+              <tr><td>Watch procedure/result videos</td><td>53%</td></tr>
+              <tr><td>Participate in forums</td><td>47%</td></tr>
+              <tr><td>Follow on social media</td><td>38%</td></tr>
+            </tbody>
+          </table>
+        </div>
         
         <p>The search patterns revealed in our keyword analysis demonstrate specific consumer interests:</p>
         
@@ -817,13 +880,34 @@
         
         <p>Financial factors play a crucial role in the decision-making process:</p>
         
-        <ul>
-            <li>The average cost of a hair transplant procedure in the Burbank/Glendale/Pasadena area ranges from $8,000 to $15,000</li>
-            <li>62% of patients save specifically for the procedure over a 1-2 year period</li>
-            <li>41% utilize financing options or medical credit cards</li>
-            <li>28% report price shopping among multiple providers</li>
-            <li>Only 18% report having partial insurance coverage for the procedure</li>
-        </ul>
+        <!-- Recommendations Callout -->
+        <div class="callout-box recommendations">
+          <b>Recommendations for Clinics:</b>
+          <ul>
+            <li><b>Invest in SEO and Google Ads</b> to capture high-intent local searches.</li>
+            <li><b>Encourage and manage online reviews</b> on Google, RealSelf, and Yelp.</li>
+            <li><b>Create short, authentic videos</b> showcasing real patient journeys and results.</li>
+            <li><b>Offer transparent pricing and financing options</b> to address price sensitivity.</li>
+            <li><b>Maintain a consistent, professional presence</b> across website, video, and social media.</li>
+          </ul>
+        </div>
+
+        <!-- Price Sensitivity Table -->
+        <div class="data-table-wrap">
+          <table class="modern-table">
+            <caption>Financial Considerations & Price Sensitivity</caption>
+            <thead>
+              <tr><th>Factor</th><th>Statistic</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Average procedure cost</td><td>$8,000–$15,000</td></tr>
+              <tr><td>Patients who save for procedure</td><td>62%</td></tr>
+              <tr><td>Use financing/credit</td><td>41%</td></tr>
+              <tr><td>Price shop among providers</td><td>28%</td></tr>
+              <tr><td>Have partial insurance coverage</td><td>18%</td></tr>
+            </tbody>
+          </table>
+        </div>
         
         <p>Price sensitivity varies by demographic segment:</p>
         <ul>
